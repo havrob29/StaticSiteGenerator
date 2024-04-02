@@ -127,7 +127,8 @@ def ordered_list_block_to_html_node(block):
     lines = block.split("\n")
     listnodes = []
     for line in lines:
-        children = text_to_children(line[3:])
+        period = line.find(". ")
+        children = text_to_children(line[period+1:])
         listnodes.append(ParentNode("li", children))
     return ParentNode("ol", listnodes)
 
